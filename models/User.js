@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
     lowercase: true,
-    match: [/^[^\s@]+@lnmiit\.ac\.in$/, 'Please use a valid LNMIIT email address']
+    match: [/^[^\s@]+@gmail\.com$/, 'Please use a valid Gmail address']
+
   },
   password: {
     type: String,
@@ -38,7 +39,8 @@ const userSchema = new mongoose.Schema({
 // Extract roll number from email
 userSchema.pre('save', function(next) {
   if (this.email && !this.rollNumber) {
-    const match = this.email.match(/^([^@]+)@lnmiit\.ac\.in$/);
+  const match = this.email.match(/^([^@]+)@gmail\.com$/);
+
     if (match) {
       this.rollNumber = match[1].toUpperCase();
       this.username = this.rollNumber;

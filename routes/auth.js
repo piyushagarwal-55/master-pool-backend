@@ -12,8 +12,8 @@ router.post('/register', [
     .isEmail()
     .normalizeEmail()
     .custom(value => {
-      if (!value.endsWith('@lnmiit.ac.in')) {
-        throw new Error('Please use your LNMIIT email address');
+      if (!value.endsWith('@gmail.com')) {
+        throw new Error('Please use your email address');
       }
       return true;
     }),
